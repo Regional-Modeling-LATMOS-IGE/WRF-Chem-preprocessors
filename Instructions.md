@@ -1,4 +1,4 @@
-# Steps for running WRF-Chem pre processors
+# Steps for running WRF-Chem preprocessors
 
 
 
@@ -27,14 +27,16 @@ https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html
 Download "Mandatory Fields". For WRF-Chem dust emissions, also download the field "erod".
 
 #### Set up WPS:  
+
 The WRF preprocessor (WPS) is run in 3 steps, using 3 executables: geogrid.exe, ungrib.exe, metgrid.exe. 
 
 Create an empty case setup folder containing the WPS setup files, so that it is easy to reproduce and document the simulation. 
 The setup folder should contain at least the following files:  
-namelist.wps, jobscript_wps.sh, GEOGRID.TBL, Vtable, METGRID.TBL 
+namelist.wps, jobscript_wps.sh, GEOGRID.TBL, Vtable, METGRID.TBL  
 Example files for specific cases can be found in this repository. For new cases, copy the setup files from a similar case and modify the files.
 
 #### Run WPS:  
+
 Create a temporary WPS run folder. Copy the input files from the WPS setup folder and the executables from the WPS source code to the WPS run folder. The run folder should contain the following files:  
 geogrid.exe, link_grib.csh, ungrib.exe metgrid.exe, namelist.wps, jobscript_wps.sh, GEOGRID.TBL, Vtable, METGRID.TBL 
 
@@ -55,12 +57,17 @@ For polar runs, an extra preprocessor needs to be run right after WPS for settin
 
 
 ### Run real.exe to create WRF-Chem input files
+
+TODO: Write README_real.md for detailed instructions on how to run real.exe
+
 Once the met_em.dXX.yyyy-mm-dd_HH:MM:SS.nc files are created by WPS, run real.exe to create WRF-Chem input files (wrfinput_dXX, wfbdy_dXX, wrflowinp_dXX, wrffdda_dXX).
 
 
 
 
 ## Step 3. Run the WRF-Chem preprocessors
+
+TODO: Write README_chem_preprocessors.md for detailed instructions on how to compile and run the WRF-Chem preprocessors
 
 ### MEGAN bio emissions preprocessors (megan_bio_emiss preprocessor)
 

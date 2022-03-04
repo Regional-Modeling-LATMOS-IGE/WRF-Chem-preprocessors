@@ -26,19 +26,31 @@ https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html
 Download "Mandatory Fields". For WRF-Chem dust emissions, also download the field "erod".
 
 #### Set up WPS:  
-Create an empty run folder so that it is easy to reproduce and document the simulation. 
+The WRF preprocessor (WPS) is run in 3 steps, using 3 executables: geogrid.exe, ungrib.exe, metgrid.exe. 
 
-The folder should contain the following:  
-"jobscript_wps.sh" - jobscript to run WPS - see examples for specific cases in this repository  
-"namelist.wps" - found at the root of the WPS source code folder, examples are also available for specific cases in this repository   
+Create an empty case setup folder containing the WPS setup files, so that it is easy to reproduce and document the simulation. 
+The setup folder should contain at least the following files: 
+namelist.wps, jobscript_wps.sh, GEOGRID.TBL, Vtable, METGRID.TBL 
+Example files for specific cases can be found in this repository. For new cases, copy the setup files from a similar case and modify the files.
 
 #### Run WPS:  
-jobscript.wps and steps  
+Create a temporary WPS run folder. Copy the input files from the WPS setup folder and the executables from the WPS source code to the WPS run folder. The run folder should contain the following files:  
+geogrid.exe, link_grib.csh, ungrib.exe metgrid.exe, namelist.wps, jobscript_wps.sh, GEOGRID.TBL, Vtable, METGRID.TBL 
+
+Launch the jobscript.wps in the cluster queue with qsub or sbatch. The jobscript runs the WPS executables in the following order:  
+./geogrid.exe      
+ln -s /path/to/metfiles/e5* . (for ERA5 data)  
+./link_grib.csh e5 (for ERA5 data)     
+./ungrib.exe  
+./metgrid.exe  
 
 Check that WPS ran properly:  
-Several met_em.dXX.yyyy-mm-dd_HH:MM:SS.nc files should be created.  
+- geogrid.exe should produce geo* NetCDF files  
+- ungrib.exe should produce FILE* files  
+- metgrid.exe should produce met_em.dXX.yyyy-mm-dd_HH:MM:SS.nc NetCDF files  
+If something went wrong errors can be investigated in .log files  
 
-For polar runs, an extra preprocessor needs to be run right after WPS for setting up the sea ice and snow depth and albedo (update_seaice_depth_and_snow.m)
+For polar runs, an extra preprocessor needs to be run right after WPS for setting up the sea ice and snow depth and albedo (update_seaice_depth_and_snow.m)  
 
 ### Create WRF input files (real.exe)
 

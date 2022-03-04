@@ -1,7 +1,6 @@
 # Steps for running WRF-Chem pre processors
 
 
-## Step 1. Follow WRF dynamics setup
 
 ### Get input meteorological data for initial/boundary conditions
 
@@ -15,7 +14,9 @@ ERA5 reanalysis: https://rda.ucar.edu/datasets/ds633.0/
 FNL analysis: https://rda.ucar.edu/datasets/ds083.2/  
 ERA-Interim: https://rda.ucar.edu/datasets/ds627.0/
 
-### Run the WRF preprocessor (WPS)
+
+
+### Run the WRF preprocessor system (WPS)
 
 TODO: Write README_wps.md for detailed instructions on how to compile and run WPS
 
@@ -29,7 +30,7 @@ Download "Mandatory Fields". For WRF-Chem dust emissions, also download the fiel
 The WRF preprocessor (WPS) is run in 3 steps, using 3 executables: geogrid.exe, ungrib.exe, metgrid.exe. 
 
 Create an empty case setup folder containing the WPS setup files, so that it is easy to reproduce and document the simulation. 
-The setup folder should contain at least the following files: 
+The setup folder should contain at least the following files:  
 namelist.wps, jobscript_wps.sh, GEOGRID.TBL, Vtable, METGRID.TBL 
 Example files for specific cases can be found in this repository. For new cases, copy the setup files from a similar case and modify the files.
 
@@ -38,7 +39,7 @@ Create a temporary WPS run folder. Copy the input files from the WPS setup folde
 geogrid.exe, link_grib.csh, ungrib.exe metgrid.exe, namelist.wps, jobscript_wps.sh, GEOGRID.TBL, Vtable, METGRID.TBL 
 
 Launch the jobscript.wps in the cluster queue with qsub or sbatch. The jobscript runs the WPS executables in the following order:  
-./geogrid.exe      
+./geogrid.exe  
 ln -s /path/to/metfiles/e5* . (for ERA5 data)  
 ./link_grib.csh e5 (for ERA5 data)     
 ./ungrib.exe  
@@ -52,10 +53,14 @@ If something went wrong errors can be investigated in .log files
 
 For polar runs, an extra preprocessor needs to be run right after WPS for setting up the sea ice and snow depth and albedo (update_seaice_depth_and_snow.m)  
 
-### Create WRF input files (real.exe)
+
+### Run real.exe to create WRF-Chem input files
+Once the met_em.dXX.yyyy-mm-dd_HH:MM:SS.nc files are created by WPS, run real.exe to create WRF-Chem input files (wrfinput_dXX, wfbdy_dXX, wrflowinp_dXX, wrffdda_dXX).
 
 
-## Step 2. Set up WRF-Chem preprocessors
+
+
+## Step 3. Run the WRF-Chem preprocessors
 
 ### MEGAN bio emissions preprocessors (megan_bio_emiss preprocessor)
 

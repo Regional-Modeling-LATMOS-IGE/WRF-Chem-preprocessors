@@ -23,11 +23,17 @@ The WPS code can be obtained from:
 https://github.com/wrf-model/WPS  
 WPS also needs input data, available at:  
 https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html  
-Download Mandatory Fields. For WRF-Chem, also download the field "erod".
+Download "Mandatory Fields". For WRF-Chem dust emissions, also download the field "erod".
 
-Set up WPS:  
+#### Set up WPS:  
+Create an empty run folder so that it is easy to reproduce and document the simulation. 
 
-Run WPS:  
+The folder should contain the following:  
+"jobscript_wps.sh" - jobscript to run WPS - see examples for specific cases in this repository  
+"namelist.wps" - found at the root of the WPS source code folder, examples are also available for specific cases in this repository   
+
+#### Run WPS:  
+jobscript.wps and steps  
 
 Check that WPS ran properly:  
 Several met_em.dXX.yyyy-mm-dd_HH:MM:SS.nc files should be created.  

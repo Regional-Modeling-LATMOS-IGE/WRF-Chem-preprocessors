@@ -87,7 +87,8 @@ CAM-Chem output for initial and boundary conditions:
 https://www2.acom.ucar.edu/gcm/cam-chem-output
 
 >Things to talk about together dust initial and boundary conditions
->PM mapping
+
+>Other PM mapping
 
 ### Chemical boundary conditions (mozbc preprocessor)
 

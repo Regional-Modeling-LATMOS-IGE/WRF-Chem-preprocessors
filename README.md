@@ -86,6 +86,9 @@ https://www2.acom.ucar.edu/wrf-chem/wrf-chem-tools-community
 CAM-Chem output for initial and boundary conditions:
 https://www2.acom.ucar.edu/gcm/cam-chem-output
 
+>Things to talk about together dust initial and boundary conditions
+>PM mapping
+
 ### Chemical boundary conditions (mozbc preprocessor)
 
 ### Fire emissions (fire_emis preprocessor)

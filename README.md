@@ -80,6 +80,8 @@ TODO: Write README_chem_preprocessors.md for detailed instructions on how to com
 Rerun real.exe
 
 ### Get input chem data (CAM-Chem or MOZART)
+Main download site is:
+https://www2.acom.ucar.edu/wrf-chem/wrf-chem-tools-community
 
 ### Chemical boundary conditions (mozbc preprocessor)
 
